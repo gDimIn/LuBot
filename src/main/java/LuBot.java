@@ -50,12 +50,10 @@ public class LuBot extends TelegramLongPollingBot {
 
             if(text.equals("/qr")) {
                 try {
-                    //byte[] qrCode = generateQRCode(String.valueOf(message.getFrom().getId()));
-                    //InputStream is = new ByteArrayInputStream(qrCode);
+
                     QrCodeGenerator qr = new QrCodeGenerator(getBotUsername(), getBotToken(), update);
                     SendPhoto photo = qr.getQRImage("t.me");
-
-                    //sendPhoto(chatId, is);
+                    photo.setChatId(chatId);
                     execute(photo);
                 } catch (WriterException | IOException | TelegramApiException e){
                     e.printStackTrace();
