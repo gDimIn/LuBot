@@ -16,7 +16,6 @@ public class StartLuBot {
 
         TelegramBotsApi botsApi = new TelegramBotsApi( DefaultBotSession.class );
         try {
-
             botsApi.registerBot(new LuBot());
         } catch (TelegramApiException e) {
             e.printStackTrace();

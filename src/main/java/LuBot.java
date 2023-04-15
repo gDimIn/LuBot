@@ -1,24 +1,19 @@
-import com.google.zxing.BarcodeFormat;
+import Keyboard.Keyboard;
+import Keyboard.CommandFactory;
+import Photo.QrCodeGenerator;
 import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,18 +22,9 @@ public class LuBot extends TelegramLongPollingBot {
     final static Logger logger = LoggerFactory.getLogger(LuBot.class);
 
     @Override
-    public String getBotUsername() {
-        return "testXDimanXBot";
-    }
-
-    @Override
-    public String getBotToken() {
-        return "2084121730:AAGJLyJu262NI4gEJTYrnqEI8Axb_yT7i74";
-    }
-
-    @Override
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
+        CommandFactory cf = new CommandFactory();
 
         if (message.hasText()) {
             String text = message.getText();
@@ -50,11 +36,12 @@ public class LuBot extends TelegramLongPollingBot {
 
             if(text.equals("/qr")) {
                 try {
-
                     QrCodeGenerator qr = new QrCodeGenerator(getBotUsername(), getBotToken(), update);
                     SendPhoto photo = qr.getQRImage("t.me");
                     photo.setChatId(chatId);
                     execute(photo);
+                    //execute(keyboardManager.message(chatId, text));
+                    execute( cf.executor(chatId, text) );
                 } catch (WriterException | IOException | TelegramApiException e){
                     e.printStackTrace();
                 }
@@ -89,24 +76,15 @@ public class LuBot extends TelegramLongPollingBot {
         }
     }
 
-    /*private byte[] generateQRCode(String id) throws WriterException, IOException {
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        int width = 250;
-        int height = 250;
-        BitMatrix bitMatrix = qrCodeWriter.encode(id, BarcodeFormat.QR_CODE, width, height);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", bos);
-        return bos.toByteArray();
+    @Override
+    public String getBotUsername() {
+        return "testXDimanXBot";
     }
 
-    private void sendPhoto(String chatId, InputStream photo) throws TelegramApiException {
-        InputFile inputFile = new InputFile(photo,"qr_code.png");
+    @Override
+    public String getBotToken() {
+        return "2084121730:AAGJLyJu262NI4gEJTYrnqEI8Axb_yT7i74";
+    }
 
-        SendPhoto sendPhoto = new SendPhoto();
-        sendPhoto.setChatId(chatId);
-        sendPhoto.setPhoto(inputFile);
-        logger.info(chatId);
-        execute(sendPhoto);
-    }*/
 
 }
