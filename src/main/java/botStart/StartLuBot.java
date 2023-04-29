@@ -1,3 +1,6 @@
+package botStart;
+
+import command.BotCommandList;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -14,6 +17,8 @@ public class StartLuBot {
         LOGGER.setLevel(Level.DEBUG);
 
         TelegramBotsApi botsApi = new TelegramBotsApi( DefaultBotSession.class );
+        BotCommandList.Commands.initCommand();
+
         try {
             botsApi.registerBot(new LuBot());
         } catch (TelegramApiException e) {
