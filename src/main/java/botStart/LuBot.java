@@ -1,6 +1,8 @@
-import Keyboard.Keyboard;
-import Keyboard.CommandFactory;
-import Photo.QrCodeGenerator;
+import command.CommandFactory;
+import message.MessageBuilder;
+import org.telegram.telegrambots.meta.api.methods.groupadministration.SetChatPhoto;
+import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
+import photo.QrCodeGenerator;
 import com.google.zxing.WriterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +14,21 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import test.Executor;
+import test.MessageBuild;
+import test.SMessage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LuBot extends TelegramLongPollingBot {
+public class LuBot extends TelegramLongPollingBot implements MessageBuild{
 
     final static Logger logger = LoggerFactory.getLogger(LuBot.class);
+    static LuBot luBot = null;
+    LuBot(){
+        luBot = this;
+    }
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -40,8 +49,8 @@ public class LuBot extends TelegramLongPollingBot {
                     SendPhoto photo = qr.getQRImage("t.me");
                     photo.setChatId(chatId);
                     execute(photo);
-                    //execute(keyboardManager.message(chatId, text));
-                    execute( cf.executor(chatId, text) );
+
+                    //execute();
                 } catch (WriterException | IOException | TelegramApiException e){
                     e.printStackTrace();
                 }

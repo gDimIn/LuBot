@@ -9,7 +9,6 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 public class StartLuBot {
 
     private static final Logger LOGGER = Logger.getLogger(LuBot.class);
-
     public static void main(String[] args) throws TelegramApiException {
         BasicConfigurator.configure();
         LOGGER.setLevel(Level.DEBUG);
