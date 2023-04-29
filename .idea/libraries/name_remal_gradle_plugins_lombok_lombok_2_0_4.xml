@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="name.remal.gradle-plugins.lombok:lombok:2.0.4" type="repository">
+    <properties maven-id="name.remal.gradle-plugins.lombok:lombok:2.0.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/name/remal/gradle-plugins/lombok/lombok/2.0.4/lombok-2.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

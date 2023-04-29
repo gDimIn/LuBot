@@ -1,0 +1,41 @@
+photo/QrCodeGenerator.java
+ photo.QrCodeGenerator
+test/GlobalsString.java
+ test.GlobalsString
+message/MessageBuilder.java
+ message.MessageBuilder
+message/TestCommandAction.java
+ message.TestCommandAction
+message/TestStart.java
+ message.TestStart
+test/PhotoSend.java
+ test.PhotoSend
+keyboard/KeyboardRegister.java
+ keyboard.KeyboardRegister
+keyboard/buttons/Button.java
+ keyboard.buttons.Button
+keyboard/Keyboard.java
+ keyboard.Keyboard
+botStart/LuBot.java
+ botStart.LuBot
+test/Executor.java
+ test.Executor
+keyboard/buttons/BtnHello.java
+ keyboard.buttons.BtnHello
+keyboard/buttons/BtnBackMain.java
+ keyboard.buttons.BtnBackMain
+keyboard/buttons/RowMarkup.java
+ keyboard.buttons.RowMarkup
+keyboard/buttons/BtnRegister.java
+ keyboard.buttons.BtnRegister
+keyboard/buttons/BtnSetReg.java
+ keyboard.buttons.BtnSetReg
+botStart/StartLuBot.java
+ botStart.StartLuBot
+test/MsgSend.java
+ test.MsgSend
+command/BotCommandList.java
+ command.BotCommandList
+ command.BotCommandList$Commands
+keyboard/KeyboardStart.java
+ keyboard.KeyboardStart
