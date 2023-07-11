@@ -1,8 +1,10 @@
 package botStart;
 
+import message.TestStart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -21,6 +23,17 @@ public class LuBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
+        if (update.hasCallbackQuery()){
+            StartLuBot.LOGGER.info(update.getCallbackQuery().getData());
+            SendMessage sm = new SendMessage();
+            sm.setChatId(String.valueOf( update.getCallbackQuery().getFrom().getId() ));
+            sm.setText(update.getCallbackQuery().getData());
+            try {
+                execute(sm);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }
 
         if (message.hasText()) {
             String text = message.getText();
@@ -89,6 +102,7 @@ public class LuBot extends TelegramLongPollingBot {
             }*/
 
         }
+
     }
 
     public static LuBot getLuBot() {

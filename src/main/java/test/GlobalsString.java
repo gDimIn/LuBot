@@ -1,6 +1,8 @@
 package test;
 
-public class GlobalsString {
+public enum GlobalsString {
 
-    public static final String CLASSIC_MESSAGE = "Classic msg";
+    CLASSIC_MESSAGE,
+    HELLO_MESSAGE,
+    ANOTHER_MESSAGE;
 }

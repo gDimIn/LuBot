@@ -11,7 +11,7 @@ import test.Executor;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class KeyboardRegister implements Executor {
+public class KeyboardAdministrtion implements Executor {
 
     private ArrayList<KeyboardRow> keyboard = new ArrayList<>();
     private static ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();

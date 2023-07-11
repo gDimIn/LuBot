@@ -2,13 +2,11 @@ package message;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
-public class TestStart extends TestAbstract {
+public abstract class TestAbstract {
 
-    @Override
-    public SendMessage action(){
+    public <T> T action(){
         TestCommandAction testAction = new TestCommandAction();
         MessageBuilder mb = new MessageBuilder().setChatId("").setText("");
-        return mb.buildSendMessage();
+        return (T) mb.buildSendMessage();
     }
-
 }

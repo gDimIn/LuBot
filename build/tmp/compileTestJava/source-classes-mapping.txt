@@ -1,8 +1,2 @@
-DialogClass.java
- DialogClass
- DialogClass$1
- DialogClass$2
- DialogClass$3
- DialogClass$4
-TestExec.java
- TestExec
+TestConf.java
+ TestConf

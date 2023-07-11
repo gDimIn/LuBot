@@ -1,0 +1,17 @@
+[ {
+  "admin" : true,
+  "id" : 1099568547,
+  "name" : "Name",
+  "phone" : null,
+  "accountNumber" : 100,
+  "subscription" : false,
+  "coin" : 0
+}, {
+  "admin" : false,
+  "id" : 170366485,
+  "name" : "Julia",
+  "phone" : null,
+  "accountNumber" : 101,
+  "subscription" : false,
+  "coin" : 0
+} ]
